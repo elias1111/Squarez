@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Squarez.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F663CD4B1EF1850100A925E5"
+               BuildableName = "SquarezTests.xctest"
+               BlueprintName = "SquarezTests"
+               ReferencedContainer = "container:Squarez.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

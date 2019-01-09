@@ -5,19 +5,20 @@
 //  Created by Elias Stevenson on 6/14/17.
 //  Copyright © 2017 Elias Stevenson. All rights reserved.
 //
-
-import UIKit
+import StoreKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+
+
+class GameViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = menuScene(fileNamed: "menuScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 

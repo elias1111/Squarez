@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GADBannerViewDelegate {
 
     var window: UIWindow?
 
