@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class circleClass: SKShapeNode{
+class circleClass: SKTextureAtlas{
     var circle: SKShapeNode? = nil
     
     func spawnCircle(pos: CGFloat, camera: SKCameraNode) -> SKShapeNode{
@@ -41,7 +41,7 @@ class circleClass: SKShapeNode{
         circle?.physicsBody = SKPhysicsBody(circleOfRadius: 15)
         circle?.physicsBody?.affectedByGravity = true
         circle?.physicsBody?.contactTestBitMask = ColliderType.CIRCLE
-        removeFromParent()
+        //removeFromParent()
         return circle!
     }
     

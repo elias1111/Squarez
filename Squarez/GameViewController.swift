@@ -53,4 +53,11 @@ class GameViewController: UIViewController{
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    @IBAction func handleGesture(_ sender: UILongPressGestureRecognizer){
+        print("started")
+        if (sender.state == UIGestureRecognizerState.began){
+            print("started")
+        }
+    }
 }

@@ -11,7 +11,7 @@ import GoogleMobileAds
 
 
 
-class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate, GADBannerViewDelegate{
+class GameplayScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate, GADInterstitialDelegate, GADBannerViewDelegate{
 
     var sprite: playerClass!
     var pauseMenu: SKSpriteNode?
@@ -32,7 +32,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
     var gameOver = false
     let highScore = UserDefaults.standard.integer(forKey: "HIGHSCORE")
     let defaults = UserDefaults.standard
-    let launchedBefore = false //UserDefaults.standard.bool(forKey: "launchedBefore")
+    var launchedBefore = false //UserDefaults.standard.bool(forKey: "launchedBefore")
     var ad : GADInterstitial!
     var bottomAd : GADBannerView!
     var timer1 = Timer()
@@ -47,21 +47,24 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
     var timer10 = Timer()
     var id = 0
     var presented = 0
+    var fingerTouching = false
+    
     
     override func didMove(to view: SKView) {
         initialize()
         if launchedBefore != true {
             firstTime?.isHidden = false
             UserDefaults.standard.set(true, forKey: "launchedBefore")
+            launchedBefore = true
         }
         self.ad = GADInterstitial(adUnitID: "ca-app-pub-8240706232956319/8682591453")
         let request = GADRequest()
         self.ad.load(request)
-        bottomAd = GADBannerView(adSize: kGADAdSizeFullBanner)
-        self.view?.addSubview(bottomAd)
-        bottomAd.adUnitID = "ca-app-pub-8240706232956319/5809850250"
-        bottomAd.rootViewController = self.view?.window?.rootViewController
-        bottomAd.frame = CGRect(x: 0.0, y: (self.view?.frame.size.height)! - bottomAd.frame.size.height, width: bottomAd.frame.size.width, height: (bottomAd.frame.size.height))
+        //bottomAd = GADBannerView(adSize: kGADAdSizeFullBanner)
+        //self.view?.addSubview(bottomAd)
+        //bottomAd.adUnitID = "ca-app-pub-8240706232956319/5809850250"
+        //bottomAd.rootViewController = self.view?.window?.rootViewController
+        //bottomAd.frame = CGRect(x: 0.0, y: (self.view?.frame.size.height)! - bottomAd.frame.size.height, width: bottomAd.frame.size.width, height: (bottomAd.frame.size.height))
     }
     
     
@@ -106,7 +109,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
             pauseHighScore?.text = String(highScore)
             pauseMenu?.isHidden = false
             if presented != 1{
-                bottomAd.load(GADRequest())
+                //bottomAd.load(GADRequest())
                 if score >= 1{
                     ad.present(fromRootViewController: (self.view?.window?.rootViewController)!)
                 }
@@ -119,6 +122,9 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        fingerTouching = true
+        sprite.physicsBody?.isResting = false
+        sprite.physicsBody?.isDynamic = true
         if gameOver != true{
             let touch = touches.first!
             var location = touch.location(in: mainCamera!)
@@ -140,16 +146,22 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
         location.y += 185
         touchPoint = location
         if touching {
-            let dt:CGFloat = 1.0/60.0
+            let dt:CGFloat = 1.0/15
             let distance = CGVector(dx: touchPoint.x-sprite.position.x, dy: touchPoint.y-sprite.position.y)
             let velocity = CGVector(dx: distance.dx/dt, dy: distance.dy/dt)
             sprite.physicsBody!.velocity = velocity
         }
         }
     }
+
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touching = false
+        touching = false;
+        //sprite.position.x = touchPoint.x
+        //sprite.position.y = touchPoint.y
+        //sprite.physicsBody?.isResting = true
+        sprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        sprite.physicsBody?.isDynamic = false
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -175,10 +187,6 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate, GADInterstitialDelegate,
             deleteBody?.removeFromParent()
         }
         
-        if (cir.circle?.position.y)! < CGFloat(700){
-            let deleteBody = cir.circle
-            deleteBody?.removeFromParent()
-        }
     }
     
     func spawnCirc(){

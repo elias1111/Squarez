@@ -21,6 +21,7 @@ class playerClass: SKSpriteNode{
         physicsBody?.contactTestBitMask = ColliderType.CIRCLE
         physicsBody?.allowsRotation = false
         physicsBody?.affectedByGravity = false
+        physicsBody?.isDynamic = false
     }
     
     func changeColor(color: Int){
