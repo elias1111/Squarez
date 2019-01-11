@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6038E8E21E81D1E008A63CC /* Video Demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F6038E8D21E81D1E008A63CC /* Video Demo.mp4 */; };
 		F6517E301EF877C300877044 /* circleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6517E2F1EF877C300877044 /* circleClass.swift */; };
 		F663CD361EF1850000A925E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663CD351EF1850000A925E5 /* AppDelegate.swift */; };
 		F663CD3E1EF1850100A925E5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663CD3D1EF1850100A925E5 /* GameViewController.swift */; };
@@ -43,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F6038E8D21E81D1E008A63CC /* Video Demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Video Demo.mp4"; path = "Squarez/Video Demo.mp4"; sourceTree = "<group>"; };
 		F62EDCE01F15363C004E44E0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F6517E2F1EF877C300877044 /* circleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = circleClass.swift; sourceTree = "<group>"; };
 		F663CD321EF1850000A925E5 /* Squarez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Squarez.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +99,6 @@
 		F663CD291EF1850000A925E5 = {
 			isa = PBXGroup;
 			children = (
-				F6038E8D21E81D1E008A63CC /* Video Demo.mp4 */,
 				F663CD341EF1850000A925E5 /* Squarez */,
 				F663CD4F1EF1850100A925E5 /* SquarezTests */,
 				F663CD5A1EF1850100A925E5 /* SquarezUITests */,
@@ -306,7 +303,6 @@
 				F663CD6E1EF1857900A925E5 /* GameplayScene.sks in Resources */,
 				F663CD461EF1850100A925E5 /* LaunchScreen.storyboard in Resources */,
 				F6AA865D1F01C6AE000B97B6 /* menuScene.sks in Resources */,
-				F6038E8E21E81D1E008A63CC /* Video Demo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
